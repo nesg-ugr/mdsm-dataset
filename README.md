@@ -1,7 +1,6 @@
 # mdsm-dataset
 # This is the dataset for the MDSM project
 
-=========
 Mobile device features collected during the (Mobiles device Dynamics Security Management (MDSM) project.
 
 
@@ -25,3 +24,4 @@ References
 [1] https://nesg.ugr.es/mdsm/
 [2] J.A. Gómez-Hernández, et al., "AMon: A Monitoring Multidimensional Feature Android Application to Secure Mobile Environments", 6th International Workshop on Traffic Measurements for Cybersecurity (WTMC) 2021.
 [3] F. Prasser, F. Kohlmayer, "Putting Statistical Disclosure Control Into Practice: The ARX Data Anonymization Tool", in Gkoulalas-Divanis, Aris, Loukides, Grigorios (Eds.): Medical Data Privacy Handbook, Springer, November 2015. ISBN: 978-3-319-23632-2.
+[4] Mohammady, Meisam and Wang, Lingyu and Hong, Yuan and Louafi, Habib and Pourzandi, Makan and Debbabi, Mourad: "Preserving Both Privacy and Utility in Network Trace Anonymization", Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security, ACM, Jan 2018. DOI:10.1145/3243734.3243809
