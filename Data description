@@ -12,10 +12,10 @@ a) Flows - WiFi network traffic of devices
 | time            | timestamp    | Flow timestamp (Reduced precision)|
 | duration        | int          | Flow duration                     |
 | protocol        | int          | Protocol (interval)               |
-| saddr           | varchar      | Source IP (sustitution)           |
+| saddr           | varchar      | Source IP (pseudo-anonymization)  |
 | sport           | int          | Source port (interval)            |
-| daddr           | varchar      | Destination IP (sustitution)      |
-| dport           | int          | Detaination port (inteval)        |
+| daddr           | varchar      | Destination IP (pseudo-anonymization)|
+| dport           | int          | Detination port (inteval)         |
 | sentBytes       | int          | Sent bytes                        |
 | receivedBytes   | int          | Received bytes                    |
 | sentPackets     | int          | Sent packets                      |
@@ -32,10 +32,10 @@ a) Flows - WiFi network traffic of devices
 (2) ToS - Type of Service
 
 (3) NewFlow and Finished identify the flow status. Flows are stored every 60 seconds, so is possible flow isn't finished.
-                                            New Flow Finished
+                                            New-Flow Finished
 
-New flow                              		1       0
-Transmiting 			                0       0
+New flow                              	      	1       0
+Transmiting 			                              0       0
 Closed                                          0       1
 Less than 60 seconds                            1       1
 
