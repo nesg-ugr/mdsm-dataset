@@ -9,13 +9,13 @@ a) Flows - WiFi network traffic of devices
 | flowId          | int		 | Flow identification                     |
 | macId           | int(11)      | Device identification             |
 | packageName     | varchar      | Package name                      |
-| time            | timestamp    | Flow timestamp (Reduced precision)|
+| time            | timestamp    | Flow timestamp                    |
 | duration        | int          | Flow duration                     |
-| protocol        | int          | Protocol (interval)               |
+| protocol        | int          | Protocol                          |
 | saddr           | varchar      | Source IP (pseudo-anonymization)  |
-| sport           | int          | Source port (interval)            |
+| sport           | int          | Source port                       |
 | daddr           | varchar      | Destination IP (pseudo-anonymization)|
-| dport           | int          | Detination port (inteval)         |
+| dport           | int          | Detination port                   |
 | sentBytes       | int          | Sent bytes                        |
 | receivedBytes   | int          | Received bytes                    |
 | sentPackets     | int          | Sent packets                      |
@@ -46,7 +46,7 @@ b) Apps - Installed Apps and their persmissions
 | Field       | Type           | Description                                                     |
 +-------------+----------------+------+-----+----------------------+-----------------------------+
 | appId       | int            | App identification                                              |
-| macId       | int            | Device identification                                           |
+| macId       | int            | Device identification (hash)                                          |
 | name        | varchar        | Package name (masked)                                           |
 | version     | varchar        | Packed version			                                 |
 | permissions | varbinary      | Permission list (1 declared, 0 not declared)                    |
@@ -59,11 +59,11 @@ c) Stat -
 | Field        | Type         | Null |Description                                               |
 +--------------+--------------+------+-----+----------------------+-----------------------------+
 | statId       | int          | NO   | Status identification                                    |
-| macId        | int          | NO   | Device indentification                                   |
+| macId        | int          | NO   | Device indentification (hash)                                  |
 | ramUsage     | int          | NO   | Ram usage                                                |
 | batteryLevel | int          | NO   | Battery level                                            |
 | cpuUsage     | int          | NO   | CPU usage                                                |
-| timestamp    | timestamp    | NO   | Timestamp (Precission)                                   |
+| timestamp    | timestamp    | NO   | Timestamp                                                |
 +--------------+--------------+------+-----+----------------------+-----------------------------+
 
 d) Bluetooth - 
@@ -71,21 +71,20 @@ d) Bluetooth -
 | Field           | Type         | Description                                                     |
 +-----------------+--------------+------+-----+----------------------+-----------------------------+
 | bluetoothId     | int          | Bluetooth identification                                        |
-| macId           | int          | Device indentification                                          |
+| macId           | int          | Device indentification    (hash)                                |
 | bluetoothDevice | varchar      | Bluetooth device                                                |
 | timestamp       | timestamp    | Timestamp                                                       |
 +-----------------+--------------+------+-----+----------------------+-----------------------------+
 
 e) Security
-
 +------------------+--------------+------+-----+----------------------+-----------------------------+
 | Field            | Type         | Description                    |
 +------------------+--------------+------+-----+----------------------+-----------------------------+
 | securityId       | int          | Protection features identification                              |
-| macId            | int          | Device identification                                           |
+| macId            | int          | Device identification (hash)                                    |
 | unknownSources   | tinyint      | Can install software from unkown sources                        |
 | developerOptions | tinyint      | Developper option is activated                                  |
-| secure           | tinyint      | Device with a locking mechanism                             |
+| secure           | tinyint      | Device with a locking mechanism                                 |
 | rooted           | tinyint      | Device rooted                                                   |
 | timestamp        | timestamp    | timestamp                                                       |
 +------------------+--------------+------+-----+----------------------+-----------------------------+
@@ -105,26 +104,26 @@ f) WiFI
 g) Devices - Device mobile characteristics of the project volunteers  
 
 +--------------+--------------+------+-----+-------------------------+-----------------------------+
-| Field        | Type     | Description (anomynization type)            |
+| Field        | Type     | Description (anomynization type)                                       |
 +--------------+--------------+------+-----+-------------------------+-----------------------------+
-| macId        | int      |             |
-| mac          | varchar  |                             |
-| manufacturer | varchar  |                              |
-| brand        | varchar  |                              |
-| model        | varchar  |                              |
-| board        | varchar  |                                                 |
-| hardware     | varchar  |                              |
-| bootloader   | varchar  |                              |
-| user         | varchar  |                              |
-| host         | varchar  |                              |
-| sdk          | tinyint  |                              |
-| id           | varchar  |                            |
-| fingerprint  | varchar  |                     |                             |
-| time         | timestamp| NO   |     | CURRENT_TIMESTAMP(3)    | on update CURRENT_TIMESTAMP |
-| cpuCores     | tinyint  |                             |
-| ramTotal     | int      |                              |
-| batteryTotal | int      |                            |
-| timestamp    | timestamp| NO   |     | 0000-00-00 00:00:00.000 |                             |
+| macId        | int      | Device Identification  (hash)                                          |
+| mac          | varchar  | MAC Address (masked)                                                   |
+| manufacturer | varchar  | Manufacter                                                             |
+| brand        | varchar  | Band                                                                   |
+| model        | varchar  | Model                                                                  |
+| board        | varchar  | Board identification (masked)                                          |
+| hardware     | varchar  | Hardware (masked)                                                      |
+| bootloader   | varchar  | Bootloador (masked)                                                    |
+| user         | varchar  | User                                                                   |
+| host         | varchar  | Host (masked)                                                          |
+| sdk          | tinyint  | SDK                                                                    |
+| id           | varchar  | ID                                                                     |
+| fingerprint  | varchar  | Fingerprinting (masked)                                                |
+| time         | timestamp| Timestamp (above data)                                                 |
+| cpuCores     | tinyint  | # CPUs (cores)                                                         |
+| ramTotal     | int      | Total RAM amount                                                       |
+| batteryTotal | int      | Total Battery capacity                                                 |
+| timestamp    | timestamp|Timestamp (CPU, RAM, Battery)                                           |
 +--------------+--------------+------+-----+-------------------------+-----------------------------+
 
 h) Connectivity - Connectivity types activated in the devices
@@ -132,12 +131,12 @@ h) Connectivity - Connectivity types activated in the devices
 +----------------+--------------+------+-----+----------------------+-----------------------------+
 | Field          | Type         | Description                                                     |
 +----------------+--------------+------+-----+----------------------+-----------------------------+
-| connectivityId | int(11)      |             |
-| macId          | int(11)      |                             |
-| data           | tinyint(4)   |                              |
-| wifi           | tinyint(4)   |                              |
-| airplane       | tinyint(4)   |                              |
-| bluetooth      | tinyint(4)   |                              |
-| gps            | tinyint(4)   |                             |
-| timestamp      | timestamp(3) |  |
+| connectivityId | int(11)      | Identificator                                                   |
+| macId          | int(11)      | MAC (hash)                                                      |
+| data           | tinyint(4)   | Data network active                                             |
+| wifi           | tinyint(4)   | WiFi active                                                     |
+| airplane       | tinyint(4)   | Airplane mode                                                   |
+| bluetooth      | tinyint(4)   | Bluetooth active                                                |
+| gps            | tinyint(4)   | GPS active                                                      |
+| timestamp      | timestamp(3) | Timestamp|
 +----------------+--------------+------+-----+----------------------+-----------------------------+
