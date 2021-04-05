@@ -6,15 +6,15 @@ a) Flows - WiFi network traffic of devices
 -----------------+--------------+------+-----+----------------------+
 | Field           | Type         | Description                       |
 +-----------------+--------------+------+-----+----------------------+
-| flowId          | int		 | Flow identification                     |
-| macId           | int(11)      | Device identification             |
+| flowId          | int		       | Flow identification               |
+| macId           | int(11)      | Device identification (hash)      |
 | packageName     | varchar      | Package name                      |
 | time            | timestamp    | Flow timestamp                    |
 | duration        | int          | Flow duration                     |
 | protocol        | int          | Protocol                          |
 | saddr           | varchar      | Source IP (pseudo-anonymization)  |
 | sport           | int          | Source port                       |
-| daddr           | varchar      | Destination IP (pseudo-anonymization)|
+| daddr           | varchar      | Destination IP (pseudo-anonymiza.)|
 | dport           | int          | Detination port                   |
 | sentBytes       | int          | Sent bytes                        |
 | receivedBytes   | int          | Received bytes                    |
